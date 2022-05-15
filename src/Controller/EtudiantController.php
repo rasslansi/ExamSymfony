@@ -17,7 +17,7 @@ class EtudiantController extends AbstractController
     {
         $repository = $doctrine->getRepository(Etudiant::class);
         $etudiants = $repository->findAll();
-        $this->addFlash('info', 'Liste des étudiants');
+//        $this->addFlash('info', 'Liste des étudiants');
 
         return $this->render('etudiant/index.html.twig', [
             'etudiants'=>$etudiants,

@@ -14,7 +14,7 @@ class SectionFixtures extends Fixture
         $sections=["math","physique","chimie","histoire","geo","francais","anglais"];
         for($i=0;$i<7;$i++){
             $section = new Section();
-            $section->setDesignation($sections[$i]);
+            $section->setDesignation($sections[$sections[$i]]);
             $manager->persist($section);
         }
 

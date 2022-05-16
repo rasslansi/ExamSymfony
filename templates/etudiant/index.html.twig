@@ -1,0 +1,49 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des etudiants{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;margin-bottom: 30px">
+            <h1>Liste des etudiants</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;margin-bottom: 30px">
+            <a href="{{ path('etudiant.add') }}" class="btn btn-primary">Ajouter un etudiant</a>
+        </div>
+    </div>
+
+{#    <a href="{{ path('etudiant.add') }}">Ajouter un étudiant</a>#}
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Firstname</th>
+        <th scope="col">Name</th>
+        <th scope="col">Section</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for etudiant in etudiants %}
+    <tr>
+        <th scope="row">{{ etudiant.prenom }}</th>
+        <td>{{ etudiant.nom }}</td>
+        <td>{% if(etudiant.section == null) %}Etudiant n'est pas affecté à une section{% else %}{{ etudiant.section }}{% endif %}</td>
+        <td>
+            <div class="col-md-12" style="text-align: center;margin-left: 5px">
+                <a href="{{ path('etudiant.delete',{id : etudiant.id}) }}" class="btn btn-primary">delete</a>
+            </div>
+{#            <div class="col-md-12" style="text-align: center;margin-right: 5px">#}
+{#                <a href="{{ path('etudiant.edit',{id : etudiant.id})  }}" class="btn btn-primary">edit</a>#}
+{#            </div>#}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock %}
